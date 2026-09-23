@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>読み上げ</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAADKklEQVRYhcWWS2gUWRSGv1u3Oi876Wg0EycP4yPaJooZJDDoYkSDEiGgZuFCdKEr3QhudOFCXKgrYZRBXOggYWAGhxE14hsfRIgYNNFEoiGiSUfNu9tK0o90951F0sGxu5Jq7On+oaA451Z9/znce6oEX2nJ2mpH0Jt2QAm2ASsABwmRGgJegbjUUz6nnsuXQ5GMiNwUr6rZjBJ/APMTAzVVcwhZ97H9eve0gSn4DUD/n+ERuZSu/exqbejVlqytdkxVniw4QJEIqj8BIbPnOg8hqE0iPKKS3AXL2zUl2J4COABKqL0ak7s9VRaqNCAndQZEnpY6+KRMd74uJQhhlo5SKBRCKZUYAwt/mM+aVWVxvWjEY/C0ue0/sTSbIDAxs6mYBkbcX+h634uIowOGMRYVu3OuhKdtXo782o9Zc2Ia8PkDdHZ1W4ab6XT9EGcOF/D2g58LVzzWDXyvfnJmsLjQxj/3DdascHNodx5/3TYYHQ9bM1Czfg6lhba4wfeaxunsDuAsTePUwXzeuQKc/9vNvm25bKzK4tqj0ahnpCO/7Ni3wbvnFzEvR+IPKHKz5axXnkNn55YcigtsNDwepb3LT111NpoGN5+MsWOTHbcRprHFa60DUoMXHT4ePx+3VLkQ4FychpyaKkrBsCeMPVMC4AtMnohYimmg4dEolc4MKp0ZlgxE1PhissKKZemsLkvn0nUPNl1QUqDT0zdh3cCBk5/jAn+rqvJMmlrHufrAoPYXO5npGg+bY3dTFFdsjX98WVRBnk7D2SKetfnYfyJ2UabH0G7PQptlEI2NeQmFo49WRL8fX4gvoDj624DpmpgGCn/MZ/XKpTPCAfoHR3je2mGaP10/zKtOP0OekOmamAb6+ofRpUTKmT+WA4PuGfN3m6LHsyUDwWCQDz2fZn04EUr5/4AGDKeQP6KBepYyvOCNJpS4mCq+UuqKAERRxdZGAeuSzO/zBvUyDVBKqp2AK4nwCaHCuwbfXDM0gN6XN10h5HogGfuhT6hwTffrW/cBZCRqDLz1fNlQeTF3IPhOQY6AbCArQVA3ghaFOusL2vZ86rgxPT7/BTzIEDCQPsTUAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1D2B4A; --paper:#F2F4F7; --sheet:#FFFFFF; --line:#D5DAE3;
+  --muted:#5E6A80; --mark:#FFE36E; --markInk:#1D2B4A; --btn:#1D2B4A; --btnInk:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E6EAF2; --paper:#121826; --sheet:#1A2233; --line:#2C3650;
+    --muted:#98A3B8; --mark:#F2D34F; --markInk:#121826; --btn:#E6EAF2; --btnInk:#121826;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E6EAF2; --paper:#121826; --sheet:#1A2233; --line:#2C3650;
+  --muted:#98A3B8; --mark:#F2D34F; --markInk:#121826; --btn:#E6EAF2; --btnInk:#121826;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100%;background:var(--paper);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  font-size:17px;line-height:1.9;
+}
+main{max-width:46rem;margin:0 auto;padding:1.25rem 1rem 9rem}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
+h1{font-size:1.35rem;font-weight:700;margin:0;letter-spacing:.04em}
+.count{color:var(--muted);font-size:.85rem}
+
+.sheet{
+  background:var(--sheet);border:1px solid var(--line);border-radius:14px;
+  min-height:55vh;position:relative;
+}
+textarea{
+  display:block;width:100%;min-height:55vh;border:0;resize:vertical;background:transparent;
+  color:var(--ink);font:inherit;line-height:1.9;padding:1.2rem 1.3rem;border-radius:14px;
+}
+textarea:focus{outline:none}
+.sheet:focus-within{border-color:var(--ink)}
+textarea::placeholder{color:var(--muted)}
+
+#reader{padding:1.2rem 1.3rem;white-space:pre-wrap;word-break:break-word}
+#reader[hidden]{display:none}
+.s{cursor:pointer;border-radius:4px;transition:background-color .15s}
+.s:hover{background:color-mix(in srgb,var(--mark) 35%,transparent)}
+.s.now{background:var(--mark);color:var(--markInk);box-shadow:0 0 0 2px var(--mark)}
+.s.done{color:var(--muted)}
+.hint{color:var(--muted);font-size:.85rem;margin:.6rem .2rem 0}
+
+.bar{
+  position:fixed;left:0;right:0;bottom:0;
+  padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom,0px));
+  background:var(--sheet);border-top:1px solid var(--line);
+}
+.bar-in{max-width:46rem;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+button,select{
+  font:inherit;font-size:.95rem;color:var(--ink);background:transparent;
+  border:1px solid var(--line);border-radius:999px;padding:.45rem .95rem;cursor:pointer;
+}
+button:hover{border-color:var(--ink)}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible,.s:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#play{
+  background:var(--btn);color:var(--btnInk);border-color:var(--btn);
+  font-weight:700;min-width:6.5rem;padding:.55rem 1.2rem;font-size:1rem;
+}
+.speed{display:flex;align-items:center;gap:.4rem;font-size:.9rem;color:var(--muted)}
+.speed input{width:7rem;accent-color:var(--ink)}
+.speed output{min-width:2.6rem;color:var(--ink);font-variant-numeric:tabular-nums}
+select{max-width:13rem;border-radius:10px}
+.spacer{flex:1}
+#msg{width:100%;font-size:.85rem;color:var(--muted);margin:0;min-height:1.2em}
+@media (max-width:560px){
+  .speed input{width:5.5rem}
+  select{max-width:100%;flex:1 1 100%}
+  .spacer{display:none}
+}
+@media (prefers-reduced-motion:reduce){.s{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>読み上げ</h1>
+    <span class="count" id="count">0文字</span>
+  </header>
+
+  <div class="sheet">
+    <textarea id="text" placeholder="ここに文章を貼り付けて「再生」を押してください。&#10;下の「貼り付け」ボタンでコピーした文章をそのまま入れられます。"></textarea>
+    <div id="reader" hidden></div>
+  </div>
+  <p class="hint" id="hint">再生中は、文をタップするとそこから読み直します。</p>
+</main>
+
+<div class="bar">
+  <div class="bar-in">
+    <button id="paste" type="button">貼り付け</button>
+    <button id="play" type="button">再生</button>
+    <button id="stop" type="button" disabled>停止</button>
+    <label class="speed">速さ
+      <input id="rate" type="range" min="0.5" max="2" step="0.1" value="1">
+      <output id="rateOut">1.0倍</output>
+    </label>
+    <span class="spacer"></span>
+    <select id="voice" aria-label="声の種類"></select>
+    <p id="msg" role="status"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var synth = window.speechSynthesis;
+  var $ = function(id){ return document.getElementById(id); };
+  var textEl=$('text'), reader=$('reader'), playBtn=$('play'), stopBtn=$('stop'),
+      pasteBtn=$('paste'), rateEl=$('rate'), rateOut=$('rateOut'), voiceSel=$('voice'),
+      msg=$('msg'), countEl=$('count');
+
+  var sentences=[], idx=0, state='idle', voices=[], token=0;
+
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  if(!synth || typeof SpeechSynthesisUtterance==='undefined'){
+    msg.textContent='このブラウザは読み上げに対応していません。Chrome・Safari・Edgeで開いてください。';
+    playBtn.disabled=true;
+  }
+
+  // 保存していた設定と下書きを戻す
+  var savedRate=load('yomi-rate'); if(savedRate){ rateEl.value=savedRate; }
+  var savedText=load('yomi-text'); if(savedText){ textEl.value=savedText; }
+  function showRate(){ rateOut.textContent=Number(rateEl.value).toFixed(1)+'倍'; }
+  function showCount(){ countEl.textContent=textEl.value.replace(/\s/g,'').length.toLocaleString()+'文字'; }
+  showRate(); showCount();
+
+  textEl.addEventListener('input',function(){ showCount(); store('yomi-text',textEl.value); });
+  rateEl.addEventListener('input',function(){
+    showRate(); store('yomi-rate',rateEl.value);
+    if(state==='playing'){ speakFrom(idx); } // 速さを変えたら今の文から読み直す
+  });
+
+  // 声の一覧（日本語を優先。Macで鳴らないことがある声は後ろへ）
+  var quirky=/Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley|Bad News|Bells|Boing|Bubbles|Cellos|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Albert|Bahh|Fred|Junior|Kathy|Ralph/i;
+  function score(v){
+    var s=0;
+    if(/^ja/i.test(v.lang)) s+=100;
+    if(/Kyoko/i.test(v.name)) s+=50;
+    else if(/Otoya|O-Ren|Hattori/i.test(v.name)) s+=40;
+    if(v.localService) s+=10;
+    if(quirky.test(v.name)) s-=80;
+    return s;
+  }
+  function loadVoices(){
+    if(!synth) return;
+    voices=synth.getVoices();
+    if(!voices.length) return;
+    var list=voices.slice().sort(function(a,b){ return score(b)-score(a); });
+    var saved=load('yomi-voice2');
+    voiceSel.innerHTML='';
+    list.forEach(function(v){
+      var o=document.createElement('option');
+      o.value=v.name; o.textContent=v.name+(/^ja/i.test(v.lang)?'':'（'+v.lang+'）');
+      voiceSel.appendChild(o);
+    });
+    if(saved && list.some(function(v){return v.name===saved;})) voiceSel.value=saved;
+    else voiceSel.value=list[0].name;
+  }
+  loadVoices();
+  if(synth && 'onvoiceschanged' in synth) synth.onvoiceschanged=loadVoices;
+  voiceSel.addEventListener('change',function(){
+    store('yomi-voice2',voiceSel.value);
+    if(state==='playing'){ speakFrom(idx); }
+  });
+
+  // 声が出なかったとき、次の候補の声に自動で切り替える
+  function tryNextVoice(){
+    var opts=[].slice.call(voiceSel.options);
+    var k=voiceSel.selectedIndex;
+    for(var j=k+1;j<opts.length;j++){
+      var v=voices.find(function(x){return x.name===opts[j].value;});
+      if(v && /^ja/i.test(v.lang) && !quirky.test(v.name)){ voiceSel.selectedIndex=j; return true; }
+    }
+    return false;
+  }
+
+  // 文ごとに区切る（長すぎる文は読点でさらに分ける）
+  function split(text){
+    var parts=text.match(/[^。．！？!?\n]+[。．！？!?」』）)]*|\n+/g)||[];
+    var out=[];
+    parts.forEach(function(p){
+      if(/^\n+$/.test(p)){ out.push({t:p,speak:false}); return; }
+      if(p.length<=100){ out.push({t:p,speak:!!p.trim()}); return; }
+      var sub=p.match(/[^、，,]+[、，,]?/g)||[p], buf='';
+      sub.forEach(function(s){
+        if((buf+s).length>100 && buf){ out.push({t:buf,speak:true}); buf=''; }
+        buf+=s;
+      });
+      if(buf) out.push({t:buf,speak:!!buf.trim()});
+    });
+    return out;
+  }
+
+  function buildReader(){
+    reader.innerHTML='';
+    sentences.forEach(function(s,i){
+      if(!s.speak){ reader.appendChild(document.createTextNode(s.t)); return; }
+      var span=document.createElement('span');
+      span.className='s'; span.textContent=s.t; span.dataset.i=i; span.tabIndex=0;
+      span.addEventListener('click',function(){ speakFrom(i); });
+      span.addEventListener('keydown',function(e){ if(e.key==='Enter'){ speakFrom(i); } });
+      s.el=span; reader.appendChild(span);
+    });
+  }
+
+  function mark(i){
+    sentences.forEach(function(s,j){
+      if(!s.el) return;
+      s.el.classList.toggle('now',j===i);
+      s.el.classList.toggle('done',j<i);
+    });
+    var cur=sentences[i]&&sentences[i].el;
+    if(cur){
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-140){
+        cur.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      }
+    }
+  }
+
+  function nextSpeakable(i){
+    while(i<sentences.length && !sentences[i].speak) i++;
+    return i;
+  }
+
+  // 1文ずつ順番に読む
+  // ・読み上げ中の文をしっかり持っておく（持っていないと「読み終わり」の合図が消えることがある）
+  // ・見張り役：合図が来なくても、声が止まっていたら次の文へ進む
+  var current=null, watch=null, startedAt=0, retries=0;
+
+  function clearWatch(){ if(watch){ clearInterval(watch); watch=null; } }
+
+  function speakFrom(i, isRetry){
+    token++; var my=token;
+    clearWatch();
+    synth.cancel();
+    i=nextSpeakable(i);
+    if(i>=sentences.length){ finish(); return; }
+    if(!isRetry) retries=0;
+    idx=i; setState('playing'); mark(i);
+
+    var u=new SpeechSynthesisUtterance(sentences[i].t);
+    u.lang='ja-JP';
+    u.rate=Number(rateEl.value);
+    var v=voices.find(function(x){return x.name===voiceSel.value;});
+    if(v){ u.voice=v; u.lang=v.lang; }
+    current=u;
+
+    var done=false, heard=false;
+    function next(){
+      if(done || my!==token || state!=='playing') return;
+      done=true; clearWatch(); speakFrom(i+1);
+    }
+    u.onstart=function(){ heard=true; };
+    u.onend=next;
+    u.onerror=function(e){
+      if(my!==token || done) return;
+      if(e.error==='interrupted'||e.error==='canceled') return;
+      done=true; clearWatch();
+      if(retries<2){ retries++; setTimeout(function(){ if(my===token) speakFrom(i,true); },300); return; }
+      msg.textContent='読み上げが止まりました。「続きから」を押すと、この文から読み直します。';
+      setState('paused');
+    };
+
+    // 取り消し直後にすぐ話させると無視されることがあるので、少し間をあける
+    setTimeout(function(){
+      if(my!==token) return;
+      try{ synth.resume(); }catch(e){}
+      synth.speak(u);
+      startedAt=Date.now();
+      watch=setInterval(function(){
+        if(my!==token || done){ clearWatch(); return; }
+        var quiet=!synth.speaking && !synth.pending;
+        var elapsed=Date.now()-startedAt;
+        if(quiet && elapsed>1200){
+          if(heard){ next(); }                 // 読み終わったのに合図が来なかった → 次へ
+          else if(retries<2){ retries++; done=true; clearWatch(); speakFrom(i,true); } // 始まらなかった → やり直し
+          else if(tryNextVoice()){ done=true; clearWatch(); speakFrom(i); msg.textContent='声が出なかったので「'+voiceSel.value+'」に切り替えました。'; }
+          else { done=true; clearWatch(); msg.textContent='声が出ませんでした。Macの音量と、システム設定の「読み上げコンテンツ」で日本語の声が入っているか確認してください。'; setState('paused'); }
+        }
+      },500);
+    },120);
+  }
+
+  function setState(s){
+    state=s;
+    playBtn.textContent = s==='playing' ? '一時停止' : (s==='paused' ? '続きから' : '再生');
+    stopBtn.disabled = s==='idle';
+    textEl.hidden = s!=='idle';
+    reader.hidden = s==='idle';
+    if(s!=='idle') msg.textContent='';
+  }
+
+  function finish(){
+    token++; synth.cancel(); mark(-1);
+    setState('idle');
+    msg.textContent='最後まで読み終わりました。';
+  }
+
+  playBtn.addEventListener('click',function(){
+    if(state==='playing'){ token++; synth.cancel(); setState('paused'); return; }
+    if(state==='paused'){ speakFrom(idx); return; }
+    var t=textEl.value;
+    if(!t.trim()){ msg.textContent='先に文章を貼り付けてください。'; textEl.focus(); return; }
+    sentences=split(t); buildReader(); speakFrom(0);
+  });
+
+  stopBtn.addEventListener('click',function(){
+    token++; synth.cancel(); mark(-1); setState('idle'); msg.textContent='';
+  });
+
+  pasteBtn.addEventListener('click',function(){
+    if(!navigator.clipboard || !navigator.clipboard.readText){
+      msg.textContent='このブラウザではボタンから貼り付けできません。入力欄を長押し（右クリック）して貼り付けてください。';
+      textEl.focus(); return;
+    }
+    navigator.clipboard.readText().then(function(t){
+      if(!t){ msg.textContent='クリップボードが空です。先に文章をコピーしてください。'; return; }
+      if(state!=='idle'){ token++; synth.cancel(); setState('idle'); }
+      textEl.value=t; showCount(); store('yomi-text',t);
+      msg.textContent='貼り付けました。「再生」で読み上げます。';
+    }).catch(function(){
+      msg.textContent='貼り付けが許可されませんでした。入力欄を長押し（右クリック）して貼り付けてください。';
+      textEl.focus();
+    });
+  });
+
+  // ページを閉じるときは声も止める
+  window.addEventListener('pagehide',function(){ if(synth) synth.cancel(); });
+})();
+</script>
+</body>
+</html>

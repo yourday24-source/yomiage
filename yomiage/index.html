@@ -107,6 +107,7 @@ select{max-width:13rem;border-radius:10px}
 <div class="bar">
   <div class="bar-in">
     <button id="paste" type="button">貼り付け</button>
+    <button id="clear" type="button">全部消す</button>
     <button id="play" type="button">再生</button>
     <button id="stop" type="button" disabled>停止</button>
     <label class="speed">速さ
@@ -124,7 +125,7 @@ select{max-width:13rem;border-radius:10px}
   var synth = window.speechSynthesis;
   var $ = function(id){ return document.getElementById(id); };
   var textEl=$('text'), reader=$('reader'), playBtn=$('play'), stopBtn=$('stop'),
-      pasteBtn=$('paste'), rateEl=$('rate'), rateOut=$('rateOut'), voiceSel=$('voice'),
+      pasteBtn=$('paste'), clearBtn=$('clear'), rateEl=$('rate'), rateOut=$('rateOut'), voiceSel=$('voice'),
       msg=$('msg'), countEl=$('count');
 
   var sentences=[], idx=0, state='idle', voices=[], token=0;
@@ -343,6 +344,25 @@ select{max-width:13rem;border-radius:10px}
       msg.textContent='貼り付けが許可されませんでした。入力欄を長押し（右クリック）して貼り付けてください。';
       textEl.focus();
     });
+  });
+
+  clearBtn.addEventListener('click',function(){
+    if(!textEl.value){ msg.textContent='消す文章がありません。'; return; }
+    if(!confirm('入力した文章を全部消しますか？')) return;
+    token++; if(synth) synth.cancel(); mark(-1); setState('idle');
+    textEl.value=''; showCount(); store('yomi-text','');
+    sentences=[]; reader.innerHTML='';
+    msg.textContent='文章を消しました。';
+    textEl.focus();
+  });
+
+  // 別のアプリに切り替えたり画面を消したりして声が止まったとき、戻ってきたら今の文から続きを読む
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden || state!=='playing' || !synth) return;
+    try{ synth.resume(); }catch(e){}
+    setTimeout(function(){
+      if(state==='playing' && !synth.speaking && !synth.pending){ speakFrom(idx); }
+    },400);
   });
 
   // ページを閉じるときは声も止める
